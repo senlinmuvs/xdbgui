@@ -12,4 +12,3 @@ Info.plist
 *.swp
 *.xcodeproj
 qrc_*
-ui_*.h
