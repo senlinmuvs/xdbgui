@@ -5,3 +5,11 @@ Release
 *.TMP
 .idea
 .DS_Store
+xdbgui
+moc_*
+Info.plist
+*.stash
+*.swp
+*.xcodeproj
+qrc_*
+ui_*.h

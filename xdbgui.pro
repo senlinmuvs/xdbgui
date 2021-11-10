@@ -71,3 +71,9 @@ include(libxdb.pri)
 FORMS += \
     AddConnDialog.ui \
     AlertDialog.ui
+
+macx {
+    QMAKE_TARGET_BUNDLE_PREFIX = com.xxmoon
+    QMAKE_BUNDLE_DATA += mac_icon
+    QMAKE_INFO_PLIST=$$PWD/Info.plist
+}
