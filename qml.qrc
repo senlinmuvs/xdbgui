@@ -1,0 +1,29 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/main.qml</file>
+        <file>qml/com/MyResult.qml</file>
+        <file>qml/com/Btn.qml</file>
+        <file>qml/com/BtnImg.qml</file>
+        <file>qml/com/MyBtn.qml</file>
+        <file>qml/com/MyImage.qml</file>
+        <file>qml/com/com.js</file>
+        <file>assets/icon_off.png</file>
+        <file>assets/icon_on.png</file>
+        <file>assets/icon_del.png</file>
+        <file>assets/icon_start.png</file>
+        <file>assets/icon_col.png</file>
+        <file>qml/MyTab.qml</file>
+        <file>qml/com/Tips.qml</file>
+        <file>assets/icon_edit.png</file>
+        <file>qml/com/EnsureTips.qml</file>
+        <file>qml/com/MyTabViewStyle.qml</file>
+        <file>assets/logo.icns</file>
+        <file>qml/com/MyTextFieldStyle.qml</file>
+        <file>qml/com/MyTable.qml</file>
+        <file>qml/com/MyTableFooter.qml</file>
+        <file>assets/icon_del2.png</file>
+        <file>qml/com/MyVerticalHeader.qml</file>
+        <file>qml/com/MyTableCell.qml</file>
+        <file>qml/com/MyTableHeader.qml</file>
+    </qresource>
+</RCC>
