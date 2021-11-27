@@ -17,7 +17,7 @@ private:
 public:
     QString logLevel = "debug";
     QString dbFile = "xdb.db";
-    QString version = "1.0.0";
+    QString version = "1.0.1";
 #ifdef Q_OS_MAC
     QString ctrl = "Cmd";
 #else

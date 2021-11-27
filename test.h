@@ -22,13 +22,20 @@ void test() {
     qDebug() << ut::time::getCurMills();
     qDebug() << "------------------------- TEST START -----------------------";
 }
-void test5() {
+void test1() {
     qDebug() << "------------------------- TEST5 START -----------------------";
     XdbInit(strchar(""));
     QString r0 = charToStr(Xdb(strchar("find h:pobi:%d")));
     QString r1 = charToStr(Xdb(strchar("find h:pobi:%d(*)")));
     qDebug() << r0;
     qDebug() << r1;
+    qDebug() << "------------------------- TEST5 END -------------------------";
+}
+void test2() {
+    qDebug() << "------------------------- TEST5 START -----------------------";
+    XdbInit(strchar("localhost,8893,,5,20,1000,5"));
+    QString r0 = charToStr(Xdb(strchar("/get maxId:pk")));
+    qDebug() << r0;
     qDebug() << "------------------------- TEST5 END -------------------------";
 }
 #endif // TEST_H

@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
 
     qmlRegisterType<MyTreeModel>("XDB.Tree", 1, 0, "TreeModel");
     qmlRegisterType<MyTreeNode>("XDB.Tree", 1, 0, "TreeElement");
-//    test();
+//    test2();
 
     Log::INS().init("");
     initPath();
