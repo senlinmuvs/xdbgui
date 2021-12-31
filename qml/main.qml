@@ -961,6 +961,7 @@ Window {
     }
     function upHashField(hashkey, field, newValue) {
         if(hashkey && field) {
+            newValue = Com.quote(newValue);
             let cmd = "/hset " + hashkey + " " + field + " " + newValue;
             console.log(cmd);
             $app.exe(cmd, fu(function(r) {

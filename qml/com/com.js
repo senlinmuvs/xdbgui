@@ -116,3 +116,9 @@ function getFirstKV(kv) {
     }
     return [paramKey,paramVal];
 }
+
+function quote(s) {
+    s = s.replace(/"/g, `\\"`);
+    s = `"` + s + `"`;
+    return s;
+}

@@ -15,9 +15,9 @@ private:
     Cfg& operator=(const Cfg&);
 
 public:
-    QString logLevel = "debug";
+    QString logLevel = "error";
     QString dbFile = "xdb.db";
-    QString version = "1.0.1";
+    QString version = "1.0.2";
 #ifdef Q_OS_MAC
     QString ctrl = "Cmd";
 #else
