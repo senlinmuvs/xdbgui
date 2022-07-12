@@ -1,6 +1,6 @@
 QT += quick widgets sql
 
-CONFIG += c++11
+CONFIG += c++17
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -73,7 +73,7 @@ FORMS += \
     AlertDialog.ui
 
 macx {
-    QMAKE_TARGET_BUNDLE_PREFIX = com.xxmoon
+    QMAKE_TARGET_BUNDLE_PREFIX = com.xx
     QMAKE_BUNDLE_DATA += mac_icon
     QMAKE_INFO_PLIST=$$PWD/Info.plist
 }
