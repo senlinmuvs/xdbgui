@@ -5,6 +5,7 @@ import QtQuick.Controls.Styles 1.4
 import XDB.Tree 1.0
 import "com"
 import "com/com.js" as Com
+import "ui.js" as UI
 
 Window {
     id: root
@@ -39,7 +40,7 @@ Window {
                 text: "XDB"
                 color: "white"
                 font.bold: true
-                font.pointSize: 12
+                font.pointSize: UI.font_size_title3
                 width: 50
                 height: parent.height
                 horizontalAlignment: Text.AlignHCenter
@@ -284,6 +285,8 @@ Window {
         width: 200
         height: parent.height - toolbar.height
         model: treemodel
+        backgroundVisible: false
+
         property var preIndex
         TableViewColumn {
             title: "DB"
@@ -371,7 +374,7 @@ Window {
                 Text {
                     id: tt
                     text: getNodeText(styleData.index, styleData.value)
-                    color: styleData.index.parent.row >= 0 || isNodeConnected(styleData.index) ? "white" : "#989898"
+                    color: styleData.index.parent.row >= 0 || isNodeConnected(styleData.index) ? "white" : "#eaeaea"
                     font.bold: (styleData.index.parent.row < 0 && isNodeConnected(styleData.index)) ? true : false
                     width: parent.width
                     height: parent.height
@@ -462,7 +465,6 @@ Window {
             }
         }
     }
-
     Component.onCompleted: {
         timer.start();
         $app.getTree(fu(function(r){

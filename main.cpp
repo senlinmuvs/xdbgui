@@ -26,10 +26,6 @@ int main(int argc, char *argv[]) {
 #ifdef Q_OS_MAC
     app.setWindowIcon(QIcon(":/assets/logo.icns"));
 #endif
-#ifdef Q_OS_WIN
-    QWindow *w = qobject_cast<QWindow *>(qmlRoot);
-    w->setIcon(QIcon(":assets/logo.ico"));
-#endif
 
     qmlRegisterType<MyTreeModel>("XDB.Tree", 1, 0, "TreeModel");
     qmlRegisterType<MyTreeNode>("XDB.Tree", 1, 0, "TreeElement");

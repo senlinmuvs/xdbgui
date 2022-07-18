@@ -11,8 +11,10 @@ Tab {
         TextArea {
             id: textArea
             width: parent.width
-            font.pointSize: 16
+            backgroundVisible: false
+            font.pointSize: 14
             height: 200
+            textColor: "white"
             Keys.onPressed: {
                 onQueryEditorKeysPressed(textArea.text, event, textArea.cursorPosition, textArea.selectedText);
             }

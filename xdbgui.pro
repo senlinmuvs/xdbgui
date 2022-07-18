@@ -77,3 +77,7 @@ macx {
     QMAKE_BUNDLE_DATA += mac_icon
     QMAKE_INFO_PLIST=$$PWD/Info.plist
 }
+
+win32 {
+#    RC_ICONS = $$PWD/assets/logo.ico
+}

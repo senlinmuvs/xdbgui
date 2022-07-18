@@ -25,5 +25,6 @@
         <file>qml/com/MyVerticalHeader.qml</file>
         <file>qml/com/MyTableCell.qml</file>
         <file>qml/com/MyTableHeader.qml</file>
+        <file>qml/ui.js</file>
     </qresource>
 </RCC>

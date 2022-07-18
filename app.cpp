@@ -140,10 +140,9 @@ void App::edit(uint id, QString text, int cbid) {
 int App::getPlatform() {
 #ifdef Q_OS_MAC
     return MAC;
-#elif Q_OS_WIN
+#endif
+#ifdef Q_OS_WIN
     return WIN;
-#else
-    return UNIX;
 #endif
 }
 QString App::getCfgVal(QString k) {
