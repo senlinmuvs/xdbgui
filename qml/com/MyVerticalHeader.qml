@@ -1,14 +1,15 @@
 import QtQuick 2.0
+import "../ui.js" as UI
 
 Rectangle {
     id: root
-    color: "#000000"
+    color: "#000"
     height: col.height
     property int from: 0
     property int totalRow: 0
     property int pageSize: 0
     width: 16*(String(totalRow).length)
-    property int h: 30
+    property int h: UI.height3
     clip: true
     signal click(int index)
     Column {
@@ -23,7 +24,7 @@ Rectangle {
                 color: ma.pressed ? "#393939" : "transparent"
                 Text {
                     text: from+index+1
-                    font.pointSize: 12
+                    font.pointSize: UI.font_size_title5
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignRight
                     color: "white"

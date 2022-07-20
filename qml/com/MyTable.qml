@@ -1,28 +1,46 @@
 import QtQuick 2.15
 import QtQuick.Controls 1.4
+import "../ui.js" as UI
 
 Rectangle {
     id: root
     property bool isSub: false
     property alias model: tableview.model
-    property alias tableTip: tableTip.text
+    property alias tableTip1: tip1.text
+    property alias tableTip2: tip2.text
     property var preEditCell
     height: parent.height
     color: "transparent"
     property int selectedIndex: -1
-    Text {
+    Rectangle {
         id: tableTip
-        height: 20
-        color: "#9a9a9a"
-        font.pointSize: 14
-        verticalAlignment: Text.AlignVCenter
-        x: 5
+        x: vh.width
+        width: parent.width - x - 10
+        height: tip1.height
+        color: "transparent"
+        Text {
+            id: tip1
+            height: UI.height3
+            color: UI.color_gray1
+            font.pointSize: UI.font_size_title4
+            verticalAlignment: Text.AlignVCenter
+            wrapMode: Text.WordWrap
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.rightMargin: tip2.width + 10
+        }
+        Text {
+            id: tip2
+            height: UI.height3
+            color: UI.color_gray1
+            font.pointSize: UI.font_size_title5
+            verticalAlignment: Text.AlignVCenter
+            anchors.right: parent.right
+            anchors.verticalCenter: parent.verticalCenter
+        }
     }
     MyVerticalHeader {
         id: vh
-        anchors.top: tableview.top
-        anchors.topMargin: 16
-        anchors.left: parent.left
+        y: UI.height1 + tableTip.height
         totalRow: tableview.model?tableview.model.count:0
     }
     Connections {
@@ -70,7 +88,7 @@ Rectangle {
         itemDelegate:  com_cell
         rowDelegate: Rectangle {
             color: "#292929"
-            height: 30
+            height: UI.height3
         }
         onClicked: {
             if(preCell) {
@@ -78,7 +96,7 @@ Rectangle {
             }
         }
         flickableItem.onContentYChanged: {
-            vh.syncContentY(flickableItem.contentY+16);
+            vh.syncContentY(flickableItem.contentY+UI.height1);
         }
     }
     function addColumn(com) {
@@ -99,5 +117,9 @@ Rectangle {
         tableview.selection.forEach(function(i) {
             tableview.model.remove(i);
         });
+    }
+    function setTip(tip1, tip2) {
+        root.tableTip1 = tip1;
+        root.tableTip2 = tip2;
     }
 }

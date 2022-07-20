@@ -2,6 +2,7 @@ import QtQuick 2.15
 import QtQuick.Controls 1.4
 import "com"
 import "com/com.js" as Com
+import "ui.js" as UI
 
 Tab {
     title: "Query1"
@@ -12,7 +13,7 @@ Tab {
             id: textArea
             width: parent.width
             backgroundVisible: false
-            font.pointSize: 14
+            font.pointSize: UI.font_size_title4
             height: 200
             textColor: "white"
             Keys.onPressed: {

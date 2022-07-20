@@ -9,8 +9,10 @@ import "ui.js" as UI
 
 Window {
     id: root
-    width: 1000
-    height: 800
+    width: 1200
+    height: 900
+    x: screen.width/2-width/2
+    y: screen.height/2-height/2
     visible: true
     color: "#191919"
     property var cbs: {0:null} // all call back
@@ -29,7 +31,7 @@ Window {
     Rectangle {
         id: toolbar
         width: parent.width
-        height: 30
+        height: UI.height2
         color: "transparent"
         Row {
             x: 5
@@ -40,7 +42,7 @@ Window {
                 text: "XDB"
                 color: "white"
                 font.bold: true
-                font.pointSize: UI.font_size_title3
+                font.pointSize: UI.font_size_title5
                 width: 50
                 height: parent.height
                 horizontalAlignment: Text.AlignHCenter
@@ -58,7 +60,7 @@ Window {
                 text: "+"
                 text_bold: true
                 text_color: "white"
-                text_size: 23
+                text_size: UI.font_size_title0
                 hover_color: "#393939"
                 color: "transparent"
                 function click() {
@@ -197,7 +199,7 @@ Window {
                 text: "<"
                 text_bold: true
                 text_color: "white"
-                text_size: 20
+                text_size: UI.font_size_title1
                 hover_color: "#393939"
                 color: "transparent"
                 function click() {
@@ -217,7 +219,7 @@ Window {
                 text_bold: true
                 text: ">"
                 text_color: "white"
-                text_size: 20
+                text_size: UI.font_size_title1
                 hover_color: "#393939"
                 color: "transparent"
                 function click() {
@@ -358,10 +360,10 @@ Window {
             headerDelegate: Rectangle {
                 color: "#000000"
                 width: 100
-                height: 16
+                height: UI.height2
                 Text {
                     color: "white"
-                    font.pixelSize: 12
+                    font.pointSize: UI.font_size_title5
                     text: styleData.value
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.verticalCenter: parent.verticalCenter
@@ -374,7 +376,8 @@ Window {
                 Text {
                     id: tt
                     text: getNodeText(styleData.index, styleData.value)
-                    color: styleData.index.parent.row >= 0 || isNodeConnected(styleData.index) ? "white" : "#eaeaea"
+                    color: styleData.index.parent.row >= 0 || isNodeConnected(styleData.index) ? "white" : UI.color_gray1
+                    font.pointSize: UI.font_size_title4
                     font.bold: (styleData.index.parent.row < 0 && isNodeConnected(styleData.index)) ? true : false
                     width: parent.width
                     height: parent.height
@@ -388,6 +391,7 @@ Window {
                     text: styleData.value
                     width: parent.width
                     height: parent.height
+                    font.pointSize: UI.font_size_title4
                     horizontalAlignment: Text.AlignLeft
                     verticalAlignment: Text.AlignVCenter
                     style: TextFieldStyle {
@@ -409,7 +413,7 @@ Window {
             }
             rowDelegate: Rectangle {
                 color: styleData.selected ? "#696969" : "transparent"
-                height: 30
+                height: UI.height3
             }
         }
     }
@@ -626,6 +630,9 @@ Window {
         root.curCmd = cmd;
         Com.fillArr(curTabCmd, tabView.currentIndex, "");
         root.curTabCmd[tabView.currentIndex] = cmd;
+        //
+        let tab = tabView.getTab(tabView.currentIndex);
+        tab.fill({datas:[], cost:0},isPaging,cmd);
         $app.exe(cmd, fu(function(r) {
             let d = JSON.parse(r);
             if(d.err) {
@@ -636,7 +643,6 @@ Window {
                 } else if(direction === 1) {
                     page--;
                 }
-                let tab = tabView.getTab(tabView.currentIndex);
                 tab.fill(d,isPaging,cmd);
                 //执行完发现结果为空，则去掉刚刚添加进去的历史命令记录
                 if(direction === 0 && cmdHistoryArr.length > 0 && !d.datas) {
@@ -696,21 +702,30 @@ Window {
         if(event.modifiers === ctrlVal && event.key === Qt.Key_Return) {
             if(selectedText) {
                 exeCmd(selectedText);
-//            } else {
-////                console.log(">>>>>", cursor, txt.length);
-//                let cmd = "";
-//                for(let i = cursor; i >= 0; i--) {
-//                    if(txt[i] === '\n') {
-//                        cmd = txt.substring(i, cursor);
-//                        break;
-//                    }
-//                }
-//                if(cursor > 0 && !cmd) {
-//                    cmd = txt;
-//                }
-//                if(cmd) {
-//                    exeCmd(cmd.trim());
-//                }
+            } else {
+                let cmd = "";
+                for(let i = cursor; i >= 0; i--) {
+                    if(txt[i] === '\n') {
+                        cmd = txt.substring(i+1, cursor);
+                        break;
+                    } else if(i === 0) {
+                        cmd = txt.substring(i, cursor);
+                        break;
+                    }
+                }
+                for(let i = cursor; i < txt.length; i++) {
+                    if(txt[i] === '\n') {
+                        cmd += txt.substring(cursor, i);
+                        break;
+                    } else if(i === txt.length-1) {
+                        cmd += txt.substring(cursor, i+1);
+                        break;
+                    }
+                }
+                console.log(">>>>>", cursor, txt.length, cmd);
+                if(cmd) {
+                    exeCmd(cmd.trim());
+                }
             }
         } else if(event.modifiers === (ctrlVal|Qt.AltModifier) && event.key === Qt.Key_C) {
             colCmd(selectedText);

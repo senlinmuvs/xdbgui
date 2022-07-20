@@ -54,10 +54,10 @@ Rectangle {
             table.width = root.width;
             table.model = tablemodel;
         }
-        table.tableTip = "["+ d.cost + "mills] " + tableTip;
+        table.setTip(tableTip, "["+ d.cost + "mills]");
         if(!isPaging) {
             if(table2) {
-                table2.tableTip = "";
+                table2.setTip("", "");
             }
         }
 //        console.log(":::::::::", JSON.stringify(d));
@@ -123,7 +123,7 @@ Rectangle {
             table2.model = tablemodel2;
             table2.isSub = true;
         }
-        table2.tableTip = cmd;
+        table2.setTip(cmd, "");
         tablemodel2.clear();
         if(d2.datas) {
             for(let i = 0; i < d2.datas.length; i++) {

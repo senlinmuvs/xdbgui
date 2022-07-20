@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls.Styles 1.4
+import "../ui.js" as UI
 
 TabViewStyle {
     frameOverlap: 1
@@ -8,7 +9,7 @@ TabViewStyle {
         color: styleData.selected ? "#000000" :"#393939"
         border.color:  "#191919"
         implicitWidth: Math.max(text.width + 10, 80)
-        implicitHeight: 25
+        implicitHeight: UI.height2
         Text {
             id: text
             anchors.centerIn: parent
