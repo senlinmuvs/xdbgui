@@ -52,7 +52,7 @@ Rectangle {
         x: xx
         y: xx
         width: parent.width + xx
-        height: parent.width + xx
+        height: parent.height + xx
 //        drag.target: parent
         drag.axis: Drag.XAxis
         acceptedButtons: Qt.LeftButton | Qt.RightButton

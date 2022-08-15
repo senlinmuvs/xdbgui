@@ -31,11 +31,11 @@ int main(int argc, char *argv[]) {
     qmlRegisterType<MyTreeNode>("XDB.Tree", 1, 0, "TreeElement");
 //    test2();
 
+    global::DB_Async->start();
     Log::INS().init("");
     initPath();
     initDB();
     RunMain::INS().init();
-    global::DB_Async->start();
 
     global::engine = new QQmlApplicationEngine();
     const QUrl url(QStringLiteral("qrc:/qml/main.qml"));
